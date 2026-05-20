@@ -8,7 +8,7 @@ public class ChatClient extends JFrame {
     private PrintWriter out;
     private JTextArea messageArea;
     private JTextField textField;
-    private JButton sendButton; // <-- Added the button variable
+    private JButton sendButton;
     private String clientName;
 
     public ChatClient() {
@@ -20,33 +20,33 @@ public class ChatClient extends JFrame {
             clientName = "Anonymous_" + (int) (Math.random() * 1000);
         }
 
-        // Build the Frame Layout
+        // Frame and naming of the screen
         setTitle("Chat Room - " + clientName);
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // 1. The Main Chat Display Area
+        // used Swing to define
         messageArea = new JTextArea();
         messageArea.setEditable(false);
         messageArea.setFont(new Font("Arial", Font.PLAIN, 14));
         add(new JScrollPane(messageArea), BorderLayout.CENTER);
 
-        // 2. Creating the Bottom Input Panel
         JPanel bottomPanel = new JPanel(new BorderLayout(5, 5)); // 5px gaps between components
         bottomPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5)); // Padding around edges
 
+        // this part is where it listens to the send button click and also enter from ur
+        // keyboard
         textField = new JTextField();
         textField.setFont(new Font("Arial", Font.PLAIN, 14));
-        textField.addActionListener(e -> sendMessage()); // Still works when you press 'Enter'
+        textField.addActionListener(e -> sendMessage());
         bottomPanel.add(textField, BorderLayout.CENTER);
 
         sendButton = new JButton("Send");
         sendButton.setFont(new Font("Arial", Font.BOLD, 14));
-        sendButton.addActionListener(e -> sendMessage()); // Works when you click the button!
+        sendButton.addActionListener(e -> sendMessage());
         bottomPanel.add(sendButton, BorderLayout.EAST);
 
-        // Add the combined panel to the bottom of the window
         add(bottomPanel, BorderLayout.SOUTH);
 
         setVisible(true);
