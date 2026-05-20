@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
+// setting the port and socket so that it can act like live chat room b/n people that is on the same server at real time 
 public class ChatServer {
     private static final int PORT = 12345;
     private static Set<PrintWriter> clientWriters = new HashSet<>();
